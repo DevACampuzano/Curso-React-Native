@@ -4,6 +4,8 @@ import Login from "./components/Login"
 import Funciones from "./typescript/Funciones"
 import ObjetosLiterarios from "./typescript/ObjetosLiterarios"
 import TiposBasicos from "./typescript/TiposBasicos"
+import Usuarios from "./components/Usuarios"
+import { Formularios } from './components/Formularios';
 
 const App = () => {
   return (
@@ -12,15 +14,19 @@ const App = () => {
       <hr />
       <TiposBasicos />
       <hr />
-      <ObjetosLiterarios/>
+      <ObjetosLiterarios />
       <hr />
-      <Funciones/>
+      <Funciones />
       <hr />
       <Contador />
       <hr />
       <ContadorConHook />
       <hr />
       <Login />
+      <hr />
+      <Usuarios />
+      <hr />
+      <Formularios />
     </div>
   )
 }
