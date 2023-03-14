@@ -1,5 +1,4 @@
-/* eslint-disable quotes */
-import React from 'react'
+import React from 'react';
 import { View, Text, StyleSheet, TouchableNativeFeedback, Platform, TouchableOpacity } from 'react-native';
 import FabProps from '../interfaces/FabProps';
 
@@ -57,7 +56,7 @@ const style = StyleSheet.create({
         width: 60,
         height: 60,
         justifyContent: 'center',
-        shadowColor: "#000",
+        shadowColor: '#000',
         shadowOffset: {
             width: 0,
             height: 4,

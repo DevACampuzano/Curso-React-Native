@@ -1,9 +1,5 @@
-/* eslint-disable quotes */
-/* eslint-disable space-infix-ops */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable react-native/no-inline-styles */
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import Fab from '../components/Fab';
 
 const ContadorScreen = () => {
