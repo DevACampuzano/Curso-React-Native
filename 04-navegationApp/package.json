@@ -1,6 +1,6 @@
 {
-  "name": "navegacion1App",
-  "version": "0.0.21",
+  "name": "navegationApp",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -10,11 +10,11 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
-    "@react-native-masked-view/masked-view": "^0.2.8",
-    "@react-navigation/stack": "^6.3.16",
-    "react": "18.2.0",
-    "react-native": "0.71.6",
-    "react-native-gesture-handler": "^2.9.0"
+    "@react-navigation/native": "^6.1.6",
+    "react": "18.1.0",
+    "react-native": "0.70.6",
+    "react-native-safe-area-context": "^4.5.0",
+    "react-native-screens": "^3.20.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
