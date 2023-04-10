@@ -1,5 +1,10 @@
 import { StyleSheet } from 'react-native';
 
+export const colors = {
+    primary: '#5856D6',
+    fondo: 'white',
+};
+
 export const styles = StyleSheet.create({
     globalMargin: {
         marginHorizontal: 20,
@@ -18,27 +23,28 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         marginRight: 20,
     },
-    botonGrandeTexto:{
+    botonGrandeTexto: {
         color: 'white',
     },
-    avatar:{
+    avatar: {
         width: 150,
         height: 150,
         borderRadius: 100,
-        marginTop:10,
+        marginTop: 10,
     },
-    avatarContainer:{
+    avatarContainer: {
         alignItems: 'center',
     },
-    menuContainer:{
+    menuContainer: {
         marginVertical: 30,
         marginHorizontal: 30,
         // alignItems: 'center',
     },
-    menuBoton:{
+    menuBoton: {
         marginVertical: 10,
+        flexDirection: 'row',
     },
-    menuText:{
+    menuText: {
         fontSize: 20,
     },
 });

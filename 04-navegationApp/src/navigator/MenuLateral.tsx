@@ -1,9 +1,10 @@
 import { DrawerContentComponentProps, DrawerContentScrollView, createDrawerNavigator } from '@react-navigation/drawer';
 import React from 'react';
 import { Image, Text, TouchableOpacity, View, useWindowDimensions } from 'react-native';
-import StackNavigator from './StackNavigator';
 import SettingScreen from '../screens/SettingScreen';
-import { styles } from '../theme/appTheme';
+import { colors, styles } from '../theme/appTheme';
+import Tabs from './Tabs';
+import Icon from 'react-native-vector-icons/Ionicons';
 // import { createStackNavigator } from '@react-navigation/stack';
 
 
@@ -25,8 +26,9 @@ const MenuLateral = () => {
             drawerContent={(props) => <MenuInterno {...props} />}
             screenOptions={{
                 drawerType: width >= 768 ? 'permanent' : 'front',
+                // headerShown:false,
             }}>
-            <Drawer.Screen name="StackNavigator" component={StackNavigator} />
+            <Drawer.Screen name="Tabs" component={Tabs} />
             <Drawer.Screen name="SettingsScreen" component={SettingScreen} />
         </Drawer.Navigator>
     );
@@ -48,16 +50,18 @@ const MenuInterno = ({ navigation }: DrawerContentComponentProps) => {
             <View style={styles.menuContainer}>
                 <TouchableOpacity
                     style={styles.menuBoton}
-                    onPress={() => navigation.navigate('StackNavigator')}
+                    onPress={() => navigation.navigate('Tabs')}
                 >
-                    <Text style={styles.menuText}>Navegacion</Text>
+                    <Icon name="map-outline" size={25} color={colors.primary} />
+                    <Text style={styles.menuText}> Tabs</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
                     style={styles.menuBoton}
                     onPress={() => navigation.navigate('SettingsScreen')}
                 >
-                    <Text style={styles.menuText}>Ajustes</Text>
+                    <Icon name="settings-outline" size={25} color={colors.primary} />
+                    <Text style={styles.menuText}> Ajustes</Text>
                 </TouchableOpacity>
             </View>
         </DrawerContentScrollView>
