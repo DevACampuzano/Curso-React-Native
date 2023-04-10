@@ -1,10 +1,9 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-native/no-inline-styles */
 // import { StackScreenProps } from '@react-navigation/stack';
 import React from 'react';
-import { Button, Text, View, TouchableOpacity, Platform } from 'react-native';
+import { Button, Text, View, TouchableOpacity } from 'react-native';
 import { styles } from '../theme/appTheme';
-import { useEffect } from 'react';
+//import { useEffect } from 'react';
 import { DrawerScreenProps } from '@react-navigation/drawer';
 
 // interface Props extends StackScreenProps<any, any> { }
@@ -12,7 +11,7 @@ interface Props extends DrawerScreenProps<any, any> { }
 
 const Pagina1Screen = ({ navigation }: Props) => {
 
-    useEffect(() => {
+    /* useEffect(() => {
         if (Platform.OS === 'ios') {
             navigation.setOptions({
                 headerLeft: () => (<Button
@@ -20,7 +19,7 @@ const Pagina1Screen = ({ navigation }: Props) => {
                     onPress={() => navigation.toggleDrawer()} />),
             });
         }
-    }, []);
+    }, []); */
 
     return (
         <View style={styles.globalMargin}>

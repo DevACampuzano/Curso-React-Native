@@ -19,6 +19,7 @@ const StackNavigator = () => {
         <Stack.Navigator
             initialRouteName="Pagina1Screen"
             screenOptions={{
+                headerShown:false,
                 headerStyle:{
                     elevation: 0,
                     shadowColor: 'transparent',
