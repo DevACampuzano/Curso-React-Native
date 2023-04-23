@@ -1,5 +1,6 @@
-import React, { createContext, useReducer } from 'react';
+import React, { createContext, useEffect, useReducer } from 'react';
 import { authReducer } from './authReducer';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export interface AuthState {
     isLoggedIn: boolean;
@@ -7,7 +8,7 @@ export interface AuthState {
     favoriteIcon?: string;
 }
 
-export const authInitialState: AuthState = {
+const authInitialState: AuthState = {
     isLoggedIn: false,
 };
 
@@ -22,6 +23,7 @@ export interface AuthContextProps {
 export const AuthContext = createContext({} as AuthContextProps);
 
 export const AuthProvider = ({ children }: { children: JSX.Element }) => {
+
     const [authState, dispatch] = useReducer(authReducer, authInitialState);
 
     const singIn = () => {
@@ -40,6 +42,14 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
         dispatch({ type: 'changeUserName', payload: userName });
     };
 
+
+    useEffect(() => {
+        const loadDataAsyncStorage = async () => {
+            const data = await AsyncStorage.getItem('authState').then(value => JSON.parse(value!));
+            dispatch({type: 'loadDataAsyncStorage', payload: data as AuthState});
+        };
+        loadDataAsyncStorage();
+    }, []);
     return (
         <AuthContext.Provider value={{
             authState,

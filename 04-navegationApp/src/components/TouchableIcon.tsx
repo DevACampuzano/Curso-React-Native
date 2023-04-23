@@ -9,9 +9,9 @@ interface Props {
 }
 
 const TouchableIcon = ({ iconName }: Props) => {
-    const { ChangeFavoriteIcon } = useContext(AuthContext);
+    const { changeFavoriteIcon } = useContext(AuthContext);
     return (
-        <TouchableOpacity onPress={() => ChangeFavoriteIcon(iconName)}>
+        <TouchableOpacity onPress={() => changeFavoriteIcon(iconName)}>
             <Icon name={iconName} size={80} color={colors.primary} />
         </TouchableOpacity>
     );
