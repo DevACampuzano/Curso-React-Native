@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import { Button, Text, View } from 'react-native';
 import { styles } from '../theme/appTheme';

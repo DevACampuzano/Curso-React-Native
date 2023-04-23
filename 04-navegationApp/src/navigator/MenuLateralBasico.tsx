@@ -4,7 +4,6 @@ import { useWindowDimensions } from 'react-native';
 import StackNavigator from './StackNavigator';
 import SettingScreen from '../screens/SettingScreen';
 
-
 const Drawer = createDrawerNavigator();
 
 const MenuLateralBasico = () => {

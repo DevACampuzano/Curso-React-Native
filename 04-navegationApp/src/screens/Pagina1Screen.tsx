@@ -1,5 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable react-native/no-inline-styles */
 // import { StackScreenProps } from '@react-navigation/stack';
 import React from 'react';
 import { Button, Text, View, TouchableOpacity, Platform } from 'react-native';
@@ -58,7 +56,6 @@ const Pagina1Screen = ({ navigation }: Props) => {
                     </Text>
                 </TouchableOpacity>
             </View>
-            {/* <Button title="Ver persona" onPress={() => navigation.navigate('Persona')} /> */}
         </View>
     );
 };

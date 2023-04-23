@@ -13,6 +13,7 @@ export const styles = StyleSheet.create({
     title: {
         fontSize: 30,
         marginBottom: 10,
+        color: '#000',
     },
     botonGrande: {
         width: 100,
