@@ -3,9 +3,9 @@ import { View, Image, StyleSheet, Dimensions, ScrollView, Text, ActivityIndicato
 import { StackScreenProps } from '@react-navigation/stack';
 import { RootStackParams } from '../navigations/Navigation';
 import useDetail from '../hooks/useMovieDetails';
-import MovieDetails from '../components/MovieDetails';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { MovieDetails } from '../components/';
 
 const { height } = Dimensions.get('screen');
 
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
     top: 30,
     left: 5,
     elevation: 9,
-    zIndex:999,
+    zIndex: 999,
   },
 });
 

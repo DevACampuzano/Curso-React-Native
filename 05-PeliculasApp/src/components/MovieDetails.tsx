@@ -17,21 +17,21 @@ const MovieDetails = ({ movieFull, cast }: Props) => {
             <View style={{ marginHorizontal: 20 }}>
                 <View style={{ flexDirection: 'row' }}>
                     <Icon name="star-outline" color="grey" size={16} />
-                    <Text>{movieFull.vote_average.toFixed(1)} </Text>
-                    <Text>
+                    <Text style={{ marginLeft: 5, ...styles.text }}>{movieFull.vote_average.toFixed(1)} </Text>
+                    <Text style={{ ...styles.text }}>
                         - {movieFull.genres.map(g => g.name).join(', ')}
                     </Text>
                 </View>
                 <Text style={styles.title}>
                     Historia
                 </Text>
-                <Text style={{ fontSize: 16 }}>
+                <Text style={{ fontSize: 16, textAlign:'justify', lineHeight:25, ...styles.text }}>
                     {movieFull.overview}
                 </Text>
                 <Text style={styles.title}>
                     Presupuesto
                 </Text>
-                <Text style={{ fontSize: 18 }}>
+                <Text style={{ fontSize: 18, ...styles.text }}>
                     {currencyFormatter.format(movieFull.budget, { code: 'USD' })}
                 </Text>
             </View>
@@ -61,6 +61,10 @@ const styles = StyleSheet.create({
         marginTop: 10,
         fontWeight: 'bold',
         color: '#000',
+    },
+    text: {
+        color: '#000',
+        opacity: 0.8,
     },
     constectFlatList: {
         marginTop: 10,
