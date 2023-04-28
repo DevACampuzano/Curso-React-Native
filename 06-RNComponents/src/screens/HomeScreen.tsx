@@ -1,10 +1,27 @@
+/* eslint-disable react/no-unstable-nested-components */
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, FlatList } from 'react-native';
+import { styles } from '../theme/appTheme';
+import { FlactListMenuItem, HeaderTitle } from '../components';
+import { menuItems } from '../data/menuItems';
+
+const ItemSeparator = () => {
+
+  return (
+    <View style={styles.separator} />);
+};
 
 const HomeScreen = () => {
+
   return (
-    <View>
-      <Text>Home asjdalkshjdalkhsdlakhj</Text>
+    <View style={{ flex: 1, ...styles.globalMargin }}>
+      <FlatList
+        data={menuItems}
+        renderItem={({ item }) => <FlactListMenuItem menuItem={item} />}
+        keyExtractor={(item) => item.name}
+        ListHeaderComponent={() => <HeaderTitle title="Opciones de menú" />}
+        ItemSeparatorComponent={ItemSeparator}
+      />
     </View>
   );
 };
