@@ -33,8 +33,8 @@ const HomeScreen = ({ }: Props) => {
 
   if (isLoading) {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignContent: 'center' }}>
-        <ActivityIndicator color="blue" size={100} />
+      <View style={{ flex: 1, justifyContent: 'center', alignContent: 'center', backgroundColor: '#000' }}>
+        <ActivityIndicator color="white" size={100} />
       </View>
     );
   }
