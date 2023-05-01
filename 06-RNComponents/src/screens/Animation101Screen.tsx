@@ -20,7 +20,7 @@ const Animation101Screen = () => {
             }} />
             <Button title="FaceIn" onPress={() => {
                 fadeIn();
-                starMovigPosition(100);
+                starMovigPosition(-100);
             }} />
             <Button title="FaceOut" onPress={() => fadeOut()} />
         </View>
