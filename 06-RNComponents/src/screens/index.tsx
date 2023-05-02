@@ -6,3 +6,7 @@ export {default as SwitchScreen} from './SwitchScreen';
 export {default as PullToRefresh} from './PullToRefresh';
 export {default as ModalScreen} from './ModalScreen';
 export {default as InfiniteScrollScreen} from './InfiniteScrollScreen';
+export {default as InputScreen} from './InputScreen';
+export {default as CustomSectionListScreen} from './CustomSectionListScreen';
+export {default as SlidesScreen} from './SlidesScreen';
+export {default as ChangeThemeScreen} from './ChangeThemeScreen';

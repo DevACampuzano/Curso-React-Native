@@ -1,23 +1,15 @@
+/* eslint-disable react/no-unstable-nested-components */
 import {ActivityIndicator, FlatList, View} from 'react-native';
-import React, {useState} from 'react';
+import {useState, useContext} from 'react';
 import {FadeInImage, HeaderTitle} from '../components';
 import {styles} from '../theme/appTheme';
+import {ThemeContext} from '../context/themeContext/ThemeContext';
 
-const RenderLoading = () => {
-  return (
-    <View
-      style={{
-        height: 50,
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%',
-      }}>
-      <ActivityIndicator size={50} color="#5856D6" />
-    </View>
-  );
-};
 const InfiniteScrollScreen = () => {
   const [numbers, setNumbers] = useState<number[]>([0, 1, 2, 3, 4, 5]);
+  const {
+    theme: {colors},
+  } = useContext(ThemeContext);
   const loadMore = () => {
     const newArray: number[] = [];
     for (let i = 0; i < 5; i++) {
@@ -27,6 +19,19 @@ const InfiniteScrollScreen = () => {
       setNumbers([...numbers, ...newArray]);
     }, 1500);
   };
+
+  const RenderLoading = () => (
+    <View
+      style={{
+        height: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
+      }}>
+      <ActivityIndicator size={50} color={colors.primary} />
+    </View>
+  );
+
   return (
     <View style={{flex: 1}}>
       <FlatList
