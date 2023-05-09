@@ -7,7 +7,7 @@ import {PokemonCard, Text} from '../components';
 
 const HomeScreen = () => {
   const {top} = useSafeAreaInsets();
-  const {isLoading, simplePokemonList, loadPokemons} = usePokemonPaginated();
+  const {simplePokemonList, loadPokemons} = usePokemonPaginated();
   return (
     <>
       <Image

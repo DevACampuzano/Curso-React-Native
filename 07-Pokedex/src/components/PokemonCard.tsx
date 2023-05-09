@@ -5,9 +5,13 @@ import {
   Dimensions,
   Image,
 } from 'react-native';
-import React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {SimplePokemon} from '../interface/pokemonInterfaces';
 import {FadeInImage, Text} from './';
+import ImageColors from 'react-native-image-colors';
+import {useNavigation} from '@react-navigation/native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {RootStackParams} from '../navigator/StackNavigator';
 
 const {width: windowWidth} = Dimensions.get('window');
 interface Props {
@@ -15,9 +19,55 @@ interface Props {
 }
 
 const PokemonCard = ({pokemon}: Props) => {
+  const [bgColor, setBgColor] = useState('grey');
+  const isMounted = useRef(true);
+
+  const history = useNavigation<StackNavigationProp<RootStackParams>>();
+
+  const getBgColor = async () => {
+    const result = await ImageColors.getColors(pokemon.picture, {
+      fallback: 'grey',
+    });
+    if (!isMounted.current) {
+      return;
+    }
+    let color;
+    switch (result.platform) {
+      case 'android':
+        color = result.dominant;
+        break;
+      case 'ios':
+        color = result.background;
+        break;
+      default:
+        color = 'grey';
+        break;
+    }
+    setBgColor(color || 'grey');
+  };
+
+  const onPress = () => {
+    history.navigate('PokemonScreen', {
+      simplePokemon: pokemon,
+      color: bgColor,
+    });
+  };
+
+  useEffect(() => {
+    getBgColor();
+    return () => {
+      isMounted.current = false;
+    };
+  }, []);
+
   return (
-    <TouchableOpacity activeOpacity={0.6}>
-      <View style={{...style.cardContainer, width: windowWidth * 0.4}}>
+    <TouchableOpacity activeOpacity={0.6} onPress={onPress}>
+      <View
+        style={{
+          ...style.cardContainer,
+          width: windowWidth * 0.4,
+          backgroundColor: bgColor,
+        }}>
         <View>
           <Text style={style.name}>
             {pokemon.name}
@@ -43,7 +93,6 @@ const style = StyleSheet.create({
     width: 160,
     marginBottom: 25,
     borderRadius: 10,
-    backgroundColor: 'red',
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
