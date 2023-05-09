@@ -1,6 +1,5 @@
 import {View, StyleSheet} from 'react-native';
-import React from 'react';
-import {PokemonFull, Sprites} from '../interface/pokemonInterfaces';
+import {PokemonFull} from '../interface/pokemonInterfaces';
 import {ScrollView} from 'react-native-gesture-handler';
 import {Text} from '.';
 import FadeInImage from './FadeInImage';
@@ -66,10 +65,8 @@ const PokemonDetails = ({pokemon}: Props) => {
       <View style={style.container}>
         <Text style={style.title}>Movimientos</Text>
         <View style={{flexDirection: 'row', flexWrap: 'wrap'}}>
-          {pokemon.moves.map(({move}) => (
-            <Text
-              style={{...style.regularText, marginRight: 10}}
-              key={move.name}>
+          {pokemon.moves.map(({move}, index) => (
+            <Text style={{...style.regularText, marginRight: 10}} key={index}>
               {move.name}
             </Text>
           ))}

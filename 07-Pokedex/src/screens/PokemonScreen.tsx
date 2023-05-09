@@ -5,7 +5,6 @@ import {
   Image,
   ActivityIndicator,
 } from 'react-native';
-import React from 'react';
 import {StackScreenProps} from '@react-navigation/stack';
 import {RootStackParams} from '../navigator/StackNavigator';
 import Icon from 'react-native-vector-icons/Ionicons';

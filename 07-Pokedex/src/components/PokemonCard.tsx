@@ -5,7 +5,7 @@ import {
   Dimensions,
   Image,
 } from 'react-native';
-import React, {useEffect, useRef, useState} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {SimplePokemon} from '../interface/pokemonInterfaces';
 import {FadeInImage, Text} from './';
 import ImageColors from 'react-native-image-colors';
@@ -53,6 +53,19 @@ const PokemonCard = ({pokemon}: Props) => {
     });
   };
 
+  const getContrastColor = (hexColor: string) => {
+    // Convertir el color hexadecimal a RGB
+    const r = parseInt(hexColor.substring(1, 3), 16) / 255;
+    const g = parseInt(hexColor.substring(3, 5), 16) / 255;
+    const b = parseInt(hexColor.substring(5, 7), 16) / 255;
+
+    // Calcular el brillo
+    const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+
+    // Devolver "black" si el brillo es alto, "white" si no lo es
+    return brightness > 0.6 ? 'black' : 'white';
+  };
+
   useEffect(() => {
     getBgColor();
     return () => {
@@ -69,7 +82,7 @@ const PokemonCard = ({pokemon}: Props) => {
           backgroundColor: bgColor,
         }}>
         <View>
-          <Text style={style.name}>
+          <Text style={{...style.name, color: getContrastColor(bgColor)}}>
             {pokemon.name}
             {'\n #' + pokemon.id}
           </Text>
@@ -108,7 +121,6 @@ const style = StyleSheet.create({
     fontWeight: 'bold',
     top: 20,
     left: 10,
-    color: 'white',
   },
   pokebola: {
     width: 100,

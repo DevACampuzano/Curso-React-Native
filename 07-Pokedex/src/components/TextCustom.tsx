@@ -1,4 +1,3 @@
-import React from 'react';
 import {Text, TextProps} from 'react-native';
 
 const TextCustom = (props: TextProps) => {

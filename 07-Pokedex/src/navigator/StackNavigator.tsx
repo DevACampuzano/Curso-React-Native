@@ -1,9 +1,10 @@
 import {createStackNavigator} from '@react-navigation/stack';
-import {HomeScreen, PokemonScreen} from '../screens';
+import {HomeScreen, PokemonScreen, SearchScreen} from '../screens';
 import {SimplePokemon} from '../interface/pokemonInterfaces';
 
 export type RootStackParams = {
   HomeScreen: undefined;
+  SearchScreen: undefined;
   PokemonScreen: {
     simplePokemon: SimplePokemon;
     color: string;
@@ -23,6 +24,7 @@ const Navigator = () => {
       }}>
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="PokemonScreen" component={PokemonScreen} />
+      <Stack.Screen name="SearchScreen" component={SearchScreen} />
     </Stack.Navigator>
   );
 };

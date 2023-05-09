@@ -1,11 +1,20 @@
-import React from 'react';
-import {Image, FlatList, ActivityIndicator, View} from 'react-native';
+import {
+  Image,
+  FlatList,
+  ActivityIndicator,
+  View,
+  TouchableOpacity,
+} from 'react-native';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import usePokemonPaginated from '../hooks/usePokemonPaginated';
 import {styles} from '../theme/appTheme';
 import {PokemonCard, Text} from '../components';
+import Icon from 'react-native-vector-icons/Ionicons';
+import {StackScreenProps} from '@react-navigation/stack';
+import {RootStackParams} from '../navigator/StackNavigator';
 
-const HomeScreen = () => {
+interface Props extends StackScreenProps<RootStackParams, 'HomeScreen'> {}
+const HomeScreen = ({navigation}: Props) => {
   const {top} = useSafeAreaInsets();
   const {simplePokemonList, loadPokemons} = usePokemonPaginated();
   return (
@@ -40,6 +49,22 @@ const HomeScreen = () => {
           }
         />
       </View>
+      <TouchableOpacity
+        activeOpacity={0.9}
+        onPress={() => navigation.navigate('SearchScreen')}
+        style={{
+          position: 'absolute',
+          right: 20,
+          bottom: 20,
+          height: 60,
+          width: 60,
+          backgroundColor: 'black',
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderRadius: 30,
+        }}>
+        <Icon name="search-outline" color="white" size={40} />
+      </TouchableOpacity>
     </>
   );
 };
