@@ -1,10 +1,10 @@
-import {View, Text} from 'react-native';
-import React from 'react';
+import {View} from 'react-native';
+import {Text} from '../components';
 
 const MapScreen = () => {
   return (
     <View>
-      <Text>MapScreen</Text>
+      <Text style={{color: '#000'}}>MapScreen</Text>
     </View>
   );
 };

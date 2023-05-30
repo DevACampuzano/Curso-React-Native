@@ -1,14 +1,25 @@
-import {Text, View} from 'react-native';
-import React from 'react';
+import {Button, StyleSheet, View} from 'react-native';
+import React, {useContext} from 'react';
+import {Text} from '../components';
+import {PermissionsContext} from '../context/PermissionsContext';
 
 const PermissionsScreen = () => {
+  const {permissions, askLocationPermission} = useContext(PermissionsContext);
+
   return (
-    <View>
-      <Text>PermissionsScreen</Text>
+    <View style={styles.container}>
+      <Button title="Permiso" onPress={askLocationPermission} />
+      <Text>{JSON.stringify(permissions, null, 5)}</Text>
     </View>
   );
 };
 
 export default PermissionsScreen;
 
-// const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
