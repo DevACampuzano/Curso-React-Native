@@ -1,6 +1,13 @@
-import {createContext, useState} from 'react';
-import {Platform} from 'react-native';
-import {request, PERMISSIONS, PermissionStatus} from 'react-native-permissions';
+/* eslint-disable curly */
+import {createContext, useEffect, useState} from 'react';
+import {AppState, Platform} from 'react-native';
+import {
+  request,
+  PERMISSIONS,
+  PermissionStatus,
+  check,
+  openSettings,
+} from 'react-native-permissions';
 
 export interface PermissionsState {
   locationStatus: PermissionStatus;
@@ -26,6 +33,13 @@ export const PermissionsProvider = ({children}: Props) => {
   const [permissions, setPermissions] =
     useState<PermissionsState>(permissionInitState);
 
+  useEffect(() => {
+    AppState.addEventListener('change', state => {
+      if (state !== 'active') return;
+      checkLocationPermission();
+    });
+  }, []);
+
   const askLocationPermission = async () => {
     let permissionStatus: PermissionStatus = 'unavailable';
     if (Platform.OS === 'ios') {
@@ -35,9 +49,20 @@ export const PermissionsProvider = ({children}: Props) => {
         PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
       );
     }
+    if (permissionStatus === 'blocked') {
+      openSettings();
+    }
     setPermissions({...permissions, locationStatus: permissionStatus});
   };
-  const checkLocationPermission = () => {};
+  const checkLocationPermission = async () => {
+    let permissionStatus: PermissionStatus = 'unavailable';
+    if (Platform.OS === 'ios') {
+      permissionStatus = await check(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE);
+    } else if (Platform.OS === 'android') {
+      permissionStatus = await check(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION);
+    }
+    setPermissions({...permissions, locationStatus: permissionStatus});
+  };
 
   return (
     <PermissionsContext.Provider
