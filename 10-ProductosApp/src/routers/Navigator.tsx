@@ -2,6 +2,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {Loading, Login, Protected, Register} from '../screens';
 import {useContext} from 'react';
 import {AuthContext} from '../context/AuthContext';
+import {ProductsNavigator} from './ProductsNavigator';
 
 const Stack = createStackNavigator();
 const Navigator = () => {
@@ -19,7 +20,13 @@ const Navigator = () => {
         },
       }}>
       {status === 'authenticated' ? (
-        <Stack.Screen name="Protected" component={Protected} />
+        <>
+          <Stack.Screen
+            name="ProductsNavigator"
+            component={ProductsNavigator}
+          />
+          <Stack.Screen name="Protected" component={Protected} />
+        </>
       ) : (
         <>
           <Stack.Screen name="Login" component={Login} />

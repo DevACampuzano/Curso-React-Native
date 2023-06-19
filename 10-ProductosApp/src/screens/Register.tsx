@@ -33,7 +33,6 @@ const Register = ({navigation}: Props) => {
     ]);
   }, [errorMessage]);
   const onRegister = () => {
-    console.log({email, password, name});
     Keyboard.dismiss();
 
     signUp({
